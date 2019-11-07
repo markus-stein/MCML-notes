@@ -1,0 +1,73 @@
+---
+title: "Likelihood Ratio Test in Generalised Linear Mixed Models"
+author: "Markus Stein"
+date: "3 March 2019"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction
+To discuss past improvements of the likelihood ratio test... 
+our own work on alternatives...
+then likelihood bootstrap-based tests in GLMM... quasillikelihood (link to MMRM), bias using this in LRT? ... marginal effects in GLMM can be done by MCLikelihood...
+application in the discussion between LMM versus MMRM... conditional versus marginal estimation in GLMM...
+
+Aplication to big problems: galton frankStein particle - simulation based approaches for GLMM... discuss nuisance parameters, missing data, random (unobservable) variables (longitudinal+spatial)... finite sample???
+
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+library(lme4)
+library(arm)
+library(RColorBrewer)
+
+##### work on model comparison using bootMer ##### simulate some data and fit a
+##### random intercept model to them
+x <- runif(100, 0, 10)
+# the grouping variable
+site <- gl(n = 10, k = 10)
+# the random intercept effect, the simulated standard deviation around the
+# intercept is 1
+rnd <- rnorm(10, 0, 1)
+# the simulated resposne variable, note that the fixed effect coefficient
+# are 1 for the intercept and 3 for the slope. Also the simulated residuals
+# will have a standard deviation of one
+y <- rep(1 + rnd, each = 10) + 3 * x + rnorm(100, 0, 1)
+# fit the model using Maximum Likelihood to be able to use the LRT
+m1 <- lmer(y ~ x + (1 | site), REML = FALSE)
+
+# simulate to generate credible intervals
+simu <- sim(m1, n.sims = 1000)
+# a new model matrix with ordered and equally spaced predictor values
+new.x <- model.matrix(~x, data = data.frame(x = seq(0, 10, length.out = 100)))
+new.y <- matrix(ncol = 1000, nrow = 100)
+# get the predicted response values for each 1000 simulations of the fixed
+# effect model parameters
+new.y <- apply(simu@fixef, 1, function(x) new.x %*% x)
+# compute the lower/upper quantile
+lower <- apply(new.y, 1, function(x) quantile(x, prob = 0.025))
+upper <- apply(new.y, 1, function(x) quantile(x, prob = 0.975))
+median <- apply(new.y, 1, function(x) quantile(x, prob = 0.5))
+
+# nice plot
+pal <- brewer.pal(10, "RdYlBu")
+plot(y ~ x, col = rep(pal, each = 10), pch = 16)
+lines(new.x[, 2], median, col = "blue", lwd = 2)
+lines(new.x[, 2], lower, col = "red", lwd = 2, lty = 2)
+lines(new.x[, 2], upper, col = "red", lwd = 2, lty = 2)```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

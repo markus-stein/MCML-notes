@@ -18,6 +18,17 @@ application in the discussion between LMM versus MMRM... conditional versus marg
 Aplication to big problems: galton frankStein particle - simulation based approaches for GLMM... discuss nuisance parameters, missing data, random (unobservable) variables (longitudinal+spatial)... finite sample???
 
 
+We denote here generalised linear models (GLM) for unit-level data 
+$(y_u, \boldsymbol{x}_u)$, for a $y_u$ outcome variable and $\boldsymbol{x}_u$ 
+the vector of covariates for unit $u$, the Exponential family of functions. 
+Denote the probability (mass or density) distribution in the form
+$$ f(y_u, x_u; \boldsymbol{\theta}) = \exp \left\{  \right\}$$
+... Analysis of Categorical Data for Complex Surveys, Skinner (2018)...
+The GLMM we denote by...
+
+he same point estimator is typically natural for both βN and β and is often called the pseudo MLE (Skinner, 1989)
+
+
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
 
 When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
@@ -71,3 +82,14 @@ plot(pressure)
 ```
 
 Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+https://www.economist.com/international/2019/11/14/economics-demography-and-social-media-only-partly-explain-the-protests-roiling-so-many-countries-today
+
+How to build a GLMM to combine economic/wealth, health, demographic, politics, social media... and explain the outbreaks of protests around the world?
+
+Why economists get things wrong... they are like a marginal model where the most assumption is profit increasing month after month... but conditional models on measures out of economics box could help to explain government performances... individual and aggregated info... to link with dynamic models and relation to quantum theories...

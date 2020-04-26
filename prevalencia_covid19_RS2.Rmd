@@ -1,0 +1,73 @@
+---
+title: "Qual a proporção de casos de Covid-19 no RS?"
+subtitle: "Prevalência de Covid-19 no RS com amostra aleatória e informação populacional."
+author: "Markus Stein"
+date: "26 April 2020"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Idéia geral
+
+Considere duas variáveis aleatórias:  
+* $Y$: o número de casos já confirmados no RS.  
+* $X$: o número real de casos no RS.
+
+Autoridades e pesquisadores gostariam de conhecer a probabilidade de uma pessoa
+ser um caso da doenca $\pi = P(X = 1)$. Porém, governos geralmente
+conseguem divulgar somente o valor de $\rho = P(Y = 1)$. Em uma tabela
+$2 \times 2$ essas informações seriam apresentadas como
+
+   $X$          | $Y = 0$ | $Y = 1$ | $\sum$
+----------------|---------|---------|----
+0               |   ???   |   ???   | ???
+1               |   ???   |   ???   | ???
+$\sum$          | $N_{0+}$| $N_{1+}$| $N$
+
+
+
+### Como calcular $\pi$?
+1. Testar toda a população do RS?  
+Inviável!
+
+2. Estatísticas oficiais?  
+Devido a quantidade de testes serem limitados em situações de emergência,
+geralemente os casos confirmados são detectados apenas em pessoas em estado grave
+que procuram atendimento, pessoas que pertencam a grupos de risco, profissionais
+de saude, ou alguma outro critério de prioridade.
+
+3. Estimar $\pi$ através de uma amostra aleatória?   
+Se uma amostra aleatória de tamanho $n$ da variável $X$ for coletada, 
+$\boldsymbol{x} = (x_1, \ldots, x_n)$, podemos calular a proporção amostral
+$$\hat p = \sum_{u=1}^n x_u / n.$$
+
+Utilizando informações amostrais que representem as contagens no interior da 
+tabela acima conseguimos estimar $\pi$ com maior eficiência. Como?
+
+
+## Amostragem + Dados populacionais
+Ao invés de utilizar apenas o número de casos na amostra...
+
+Além  do teste, precisamos saber o número de unidades na amostra que já foram 
+consideradas caso anteriormente.
+
+```{r cars}
+summary(cars)
+```
+
+
+
+
+
+## Função de verossimilhança
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+pós estratificação, raking e calibragem...

@@ -1,8 +1,8 @@
 ---
 title: "Qual a proporção de casos de Covid-19 no RS?"
 subtitle: "Prevalência de Covid-19 no RS com amostra aleatória e informação populacional."
-author: "Markus Stein"
-date: "26 April 2020"
+# author: "Markus Stein"
+# date: "26 April 2020"
 output: pdf_document
 ---
 
@@ -12,62 +12,129 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Idéia geral
 
-Considere duas variáveis aleatórias:  
-* $Y$: o número de casos já confirmados no RS.  
-* $X$: o número real de casos no RS.
+Considere duas quantidades de interesse:
 
-Autoridades e pesquisadores gostariam de conhecer a probabilidade de uma pessoa
-ser um caso da doenca $\pi = P(X = 1)$. Porém, governos geralmente
-conseguem divulgar somente o valor de $\rho = P(Y = 1)$. Em uma tabela
-$2 \times 2$ essas informações seriam apresentadas como
+* $N_y$: o número de casos já confirmados no RS.  
 
-   $X$          | $Y = 0$ | $Y = 1$ | $\sum$
-----------------|---------|---------|----
-0               |   ???   |   ???   | ???
-1               |   ???   |   ???   | ???
-$\sum$          | $N_{0+}$| $N_{1+}$| $N$
+* $N_x$: o número real de casos no RS.
 
+Autoridades e pesquisadores gostariam de conhecer o número verdadeiro de casos 
+da doença $N_x$, para uma população de tamanho $N$. Geralmente governos e 
+órgãos responsáveis por testes conseguem divulgar somente o valor de $N_y$. 
+Suponha que $N_y \leq N_x$ e que $N_y$ seja conhecido, algumas razões para isso 
+são discutidas em (ref.). 
+
+Se todas as quantidades definidas acima fossem observadas poderíamos apresentar 
+os dados na forma de uma tabela $2 \times 2$ como essa abaixo.
+
+Casos Reais | Não confirmados | Casos confirmados | $\sum$
+------------|---------|---------|-----------------
+Não         |   ???   |   ???   | $N - N_x$???
+Sim         |   ???   |   ???   | $N_x$???
+$\sum$      | $N - N_y$ | $N_y$     | $N$
+
+<!--    $X$          | $Y = 0$ | $Y = 1$ | $\sum$ -->
+<!-- ----------------|---------|---------|---- -->
+<!-- 0               |   ???   |   ???   | ??? -->
+<!-- 1               |   ???   |   ???   | ??? -->
+<!-- $\sum$          | $N_{0+}$| $N_{1+}$| $N$ -->
+
+Proporções de casos em populações finitas podem ser representadas por 
+probabilidades. Primeiramente defina as variáveis aleatórias:    
+
+* $Y$: indicadora de caso já confirmado no RS $(Y = 1)$.  
+
+* $X$: indicadora de casos real no RS $(X = 1)$.
+
+Assim a proporção de casos reais da doença, $N_x / N$, pode ser escrita como 
+a probabilidade de uma pessoa na população ser um caso real, $\pi = P(X = 1)$. 
+A proporção de casos já confirmados $N_y / N$, representa a probabilidade 
+de uma pessoa ser um caso confirmado, $\rho = P(Y = 1)$. Suponha que 
+$\rho \leq \pi$ (ref.).
 
 
 ### Como calcular $\pi$?
-1. Testar toda a população do RS?  
-Inviável!
+1. Estatísticas oficiais?  
+Devido a quantidade limitada de testes (em situações de emergência), geralmente 
+os casos são detectados apenas em unidades da população em estado grave que 
+procuram atendimento, pessoas que pertencam a grupos de risco, profissionais de 
+saude, ou algum outro critério de prioridade. O que provavelmente não 
+representará a proporcao real de casos na regiao de interesse.
 
-2. Estatísticas oficiais?  
-Devido a quantidade de testes serem limitados em situações de emergência,
-geralemente os casos confirmados são detectados apenas em pessoas em estado grave
-que procuram atendimento, pessoas que pertencam a grupos de risco, profissionais
-de saude, ou alguma outro critério de prioridade.
+
+2. Testar toda a população do RS?  
+Inviável! (Impossível seja pelo custo ou tempo, não eficiente, ...)
 
 3. Estimar $\pi$ através de uma amostra aleatória?   
-Se uma amostra aleatória de tamanho $n$ da variável $X$ for coletada, 
+Se coletarmos uma amostra aleatória de tamanho $n$ da variável $X$, 
 $\boldsymbol{x} = (x_1, \ldots, x_n)$, podemos calular a proporção amostral
-$$\hat p = \sum_{u=1}^n x_u / n.$$
+$$\hat \pi = \frac{\sum_{u=1}^n x_u}{n} = \frac{n_x}{n}.$$
 
-Utilizando informações amostrais que representem as contagens no interior da 
-tabela acima conseguimos estimar $\pi$ com maior eficiência. Como?
+### E se também observamos $Y$ para cada unidade?  
+* Utilizando informações amostrais que representem as contagens no interior da 
+tabela acima conseguimos estimar $\pi$ com maior eficiência (ref.). Como?
+
+Na amostra teríamos a tabela
+
+Casos Reais | Não confirmados | Casos confirmados | $\sum$
+------------|---------|---------|-----------------
+Não         |   $n - n_x$   |   0   | $n - n_x$
+Sim         |   $n_x - n_y$   |   $n_y$   | $n_x$
+$\sum$      | $n - n_y$ | $n_y$     | $n$
+
+Obs.: Pesquisadores ainda podem ter interesse em quantificar a proporção da 
+diferença entre as duas probabilidades, ou seja, desejam estimar uma quantidade 
+$\mu$ tal que $\pi = \mu \times \rho$.
+
+Obs. 2: Nesse caso precisaramos conhecer $\rho$. Sabemos o valore de $\rho$?
+Se assumirmos $\rho$ conhecido (quando o número de casos detectados são 
+precisamente considerados corretos...
+
+Obs. 3: Conhecendo $\rho$, um estimador para $\mu$ pode ser dado por 
+$\hat \mu = \frac{ \hat \pi }{\rho} = \frac{n_x}{n \rho}$, se estimarmos 
+$\hat \pi = n_x / n$, a proporção amostral de casos reais.
 
 
-## Amostragem + Dados populacionais
-Ao invés de utilizar apenas o número de casos na amostra...
-
-Além  do teste, precisamos saber o número de unidades na amostra que já foram 
-consideradas caso anteriormente.
-
-```{r cars}
-summary(cars)
-```
+## No caso do RS
+Estimativas do governo indicam $\pi = ?$. QUal o estimador utilizado? (media amostral?)
+Assumindo uma popuação de $N=113.000.00$ habitantes no RS (ref.)... 
+Informacoes oficiais dizem que existem $Y=348$ casos confirmados na população do RS...
 
 
+## Amostragem $+$ Dados populacionais
+Ao invés de utilizar apenas o número de casos na amostra podemos tornar mais eficiente...
+
+Além  do teste, se soubermos o número de unidades na amostra que já foram consideradas caso anteriormente...
+
+<!-- ```{r cars} -->
+<!-- summary(cars) -->
+<!-- ``` -->
 
 
 
 ## Função de verossimilhança
+Para o problema acima temos $X \sim Binomial(n, \pi)$ e 
+$Y \vert X \sim Binomial \left( X, \frac{q}{p} \right)$, assim a 
+distribuição conjunta das variáveis é dada por
+$$ p(Y,X) =  \pi^{X} (1-\pi)^{1-X} \times (\rho/\pi)^{Y} \left[ 1- (\rho/\pi) \right]^{X-Y}$$
 
-You can also embed plots, for example:
+Agora sponha que observamos uma amostra aleatória (simples) de tamanho $n$ da 
+população de interesse, $(\boldsymbol{y}, \boldsymbol{x}) = \left\{ 
+(y_1, x_1), \ldots, (y_n,x_n) \right\}$. A distribuição conjunta de 
+probabilidade pode ser dada por
+$$ L(\pi; \boldsymbol{y},\boldsymbol{x}) =  {n \choose n_x} \pi^{n_x} (1-\pi)^{n-n_x} \times {n_x \choose n_y} (\rho/\pi)^{n_y} \left[ 1- (\rho/\pi) \right]^{n_x-n_y}$$
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+Verossimilhanca em termos de $\mu$...
+$$ L(\mu; \boldsymbol{y},\boldsymbol{x}) =  {n \choose n_x} \pi^{n_x} (1-\pi)^{n-n_x} \times {n_x \choose n_y} (\rho/\pi)^{n_y} \left[ 1- (\rho/\pi) \right]^{n_x-n_y}$$
 
-pós estratificação, raking e calibragem...
+
+* Isso é o mesmo que pós estratificação, raking e calibragem...
+
+
+## Referências
+
+Estimating the proportion of Corona cases with a random sample   
+
+* https://grazeconomics.wordpress.com/2020/04/22/estimating-the-proportion-of-corona-cases-with-a-random-sample/
+
+

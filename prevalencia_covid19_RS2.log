@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.13)  27 APR 2020 18:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2020.3.13)  29 APR 2020 15:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -978,35 +978,35 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 92.
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
 
 Package amsmath Warning: Foreign command \atopwithdelims;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 230.
+(amsmath)                 on input line 258.
 
-[2]
-Overfull \hbox (0.21613pt too wide) in paragraph at lines 249--250
+
+Overfull \hbox (0.21613pt too wide) in paragraph at lines 277--278
 [][]$\T1/lmr/m/n/10 (+6) https : / / grazeconomics . wordpress . com / 2020 / 0
 4 / 22 / estimating -[] the -[] proportion -[] of -[] corona -[] cases -[] with
  -[] a -[]
  []
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 252.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 280.
 [3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 252.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 280.
 (./prevalencia_covid19_RS2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 252.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 252.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 280.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 280.
 Package rerunfilecheck Info: File `prevalencia_covid19_RS2.out' has not changed
 .
 (rerunfilecheck)             Checksum: BDB3478C65F4D4E607272FDC4077C022;1168.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 252.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 280.
  ) 
 Here is how much of TeX's memory you used:
- 12711 strings out of 494944
- 182179 string characters out of 6180677
- 284290 words of memory out of 5000000
- 15765 multiletter control sequences out of 15000+600000
+ 12715 strings out of 494944
+ 182204 string characters out of 6180677
+ 285422 words of memory out of 5000000
+ 15767 multiletter control sequences out of 15000+600000
  56193 words of font info for 77 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  31i,6n,35p,917b,389s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1023,10 +1023,10 @@ are/texmf/fonts/type1/public/lm/lmr12.pfb></usr/share/texmf/fonts/type1/public/
 lm/lmr17.pfb></usr/share/texmf/fonts/type1/public/lm/lmr7.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7
 .pfb>
-Output written on prevalencia_covid19_RS2.pdf (3 pages, 191249 bytes).
+Output written on prevalencia_covid19_RS2.pdf (3 pages, 192601 bytes).
 PDF statistics:
- 133 PDF objects out of 1000 (max. 8388607)
- 113 compressed objects within 2 object streams
- 23 named destinations out of 1000 (max. 500000)
+ 136 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
+ 25 named destinations out of 1000 (max. 500000)
  10297 words of extra memory for PDF output out of 12000 (max. 10000000)
 

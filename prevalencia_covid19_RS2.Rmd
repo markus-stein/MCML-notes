@@ -100,22 +100,27 @@ Estimativas do governo indicam $\pi = ?$. QUal o estimador utilizado? (media amo
 Assumindo uma popuação de $N=113.000.00$ habitantes no RS (ref.)... 
 Informacoes oficiais dizem que existem $Y=348$ casos confirmados na população do RS...
 
-Fase 1
-Populacao
+Fase 1 - retrato de 01/04 (pesquisadores acreditam que testes retratem situação em 01/04)
 
-Casos Reais | Não confirmados | Casos confirmados | $\sum$
-------------|---------|---------|-----------------
-Não         |   ???   |   0    | 
-Sim         |   ???   |   ???  | 
-$\sum$      | 111.299.616 | 384 | 11.300.000
+População   | Não era | Já era caso | $\sum$ | Amostra     | Não era | Já era caso | $\sum$
+------------|---------|---------|-----------------|------------|---------|---------|-----------------
+Não caso    |   ???   |   0    |  ???  |  Não caso  | 4.187 |  0  | 4.187 
+Caso real   |   ???   |   390  |  ???  |  Caso real |   2   |  0?  | 2
+$\sum$      | 111.299.610 | 390 | 11.300.000 | $\sum$      | 4.189 |  0?  | 4.189
+*Pop. data updated in 30/04/2020 from http://ti.saude.rs.gov.br/covid19/
 
-Amostra
 
-Casos Reais | Não confirmados | Casos confirmados | $\sum$
-------------|---------|---------|-----------------
-Não         | 4.187 |  0  | 4.187
-Sim         |   2   |  0    | 2
-$\sum$      | 4.189 |  0  | 4.189
+Fase 2 - retrato de 14/04 (* mesma idéia da fase 1)
+
+População   | Não era | Já era caso | $\sum$ | Amostra     | Não era | Já era caso | $\sum$
+------------|---------|---------|-----------------|------------|---------|---------|-----------------
+Não caso    |   ???   |   0    |  ???  |  Não caso  | 4.994 |  0  | 4.994 
+Caso real   |   ???   |   777  |  ???  |  Caso real |   6   |  0?  | 6
+$\sum$      | 11.299.223 | 777 | 11.300.000? | $\sum$      | 4.500 |  0?  | 4.500
+*Pop. data in 30/04/2020 from http://ti.saude.rs.gov.br/covid19/
+**There is information about tests on some relatives from the same Government's study. They are not randomly selected in this case... how to use such information???
+
+
 
 ## Amostragem $+$ Dados populacionais
 Ao invés de utilizar apenas o número de casos na amostra podemos tornar mais eficiente...

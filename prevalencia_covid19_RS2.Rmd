@@ -42,9 +42,9 @@ $\sum$      | $N - N_y$ | $N_y$     | $N$
 Proporções de casos em populações finitas podem ser representadas por 
 probabilidades. Primeiramente defina as variáveis aleatórias:    
 
-* $Y$: indicadora de caso já confirmado no RS $(Y = 1)$.  
+* $Y$: indicadora de caso já confirmado $(Y = 1)$.  
 
-* $X$: indicadora de casos real no RS $(X = 1)$.
+* $X$: indicadora de caso real $(X = 1)$.
 
 Assim a proporção de casos reais da doença, $N_x / N$, pode ser escrita como 
 a probabilidade de uma pessoa na população ser um caso real, $\pi = P(X = 1)$. 
@@ -100,7 +100,7 @@ Estimativas do governo indicam $\pi = ?$. QUal o estimador utilizado? (media amo
 Assumindo uma popuação de $N=113.000.00$ habitantes no RS (ref.)... 
 Informacoes oficiais dizem que existem $Y=348$ casos confirmados na população do RS...
 
-Fase 1 - retrato de 01/04 (pesquisadores acreditam que testes retratem situação em 01/04)
+### Fase 1 - retrato de 01/04 (pesquisadores acreditam que testes retratem situação em 01/04)
 
 População   | Não era | Já era caso | $\sum$ | Amostra     | Não era | Já era caso | $\sum$
 ------------|---------|---------|-----------------|------------|---------|---------|-----------------
@@ -109,8 +109,30 @@ Caso real   |   ???   |   390  |  ???  |  Caso real |   2   |  0?  | 2
 $\sum$      | 111.299.610 | 390 | 11.300.000 | $\sum$      | 4.189 |  0?  | 4.189
 *Pop. data updated in 30/04/2020 from http://ti.saude.rs.gov.br/covid19/
 
+A proporção estimada de casos no RS usando somente os dados da pesquisa Estimativas do governo dizem que 
+$$ \hat \pi = 2/4189 \approx 0.00048,$$
+O relatório do governo diz que a porporção de pessoas com anticorpos no RS seja aproximadamente 
+igual a $0,05\%$. O estimador calibrado $\hat \pi_A = 0,0005119542$.
 
-Fase 2 - retrato de 14/04 (* mesma idéia da fase 1)
+```{r, echo=FALSE, eval=FALSE}
+# phase 1 data
+N <- 11300000; Ny <- 390; n <- 4189; nx <- 2; ny <- 0
+# sample proportion  
+pihat <- nx / n
+pihat
+# sample proportion calibrated
+pihat_a <- (Ny / N) + (nx - ny) / n
+pihat_a
+# sample proportion government
+pihat_gov <- 0.0005
+# number of infected by method
+N * c(pihat, pihat_a, pihat_gov)
+```
+
+Numeros pequenos!!! ...  
+
+
+### Fase 2 - retrato de 14/04 (* mesma idéia da fase 1)
 
 População   | Não era | Já era caso | $\sum$ | Amostra     | Não era | Já era caso | $\sum$
 ------------|---------|---------|-----------------|------------|---------|---------|-----------------
@@ -120,6 +142,24 @@ $\sum$      | 11.299.223 | 777 | 11.300.000? | $\sum$      | 4.500 |  0?  | 4.50
 *Pop. data in 30/04/2020 from http://ti.saude.rs.gov.br/covid19/
 **There is information about tests on some relatives from the same Government's study. They are not randomly selected in this case... how to use such information???
 
+```{r, echo=FALSE, eval=FALSE}
+# phase 2 data
+N <- 11300000; Ny <- 777; n <- 4500; nx <- 6; ny <- 0
+# sample proportion  
+pihat <- nx / n
+pihat
+# sample proportion calibrated
+pihat_a <- (Ny / N) + (nx - ny) / n
+pihat_a
+# sample proportion government
+pihat_gov <- 0.0013
+pihat_gov
+# number of infected by method
+N * c(pihat, pihat_a, pihat_gov)
+```
+
+Comparar estimativas brutas do governo... com estimador ajustado...
+Como juntar as informacoes temporais? E espaciais, quando houverem...  no caso do RS os nnumeros sao muitissimo pequenos...
 
 
 ## Amostragem $+$ Dados populacionais
@@ -130,8 +170,11 @@ Além  do teste, se soubermos o número de unidades na amostra que já foram con
 <!-- ```{r cars} -->
 <!-- summary(cars) -->
 <!-- ``` -->
+Um estimador ajustado (calibrado) para $\pi$ e dado por $\hat \pi_A = q + \frac{n_x - n_y}{n}$... como obter? 
+Próxima seção...
 
-
+Obs. 4: Um estimador ajustado (calibrado) para $\mu$ pode ser dado $\mu_A = 1 + 
+\frac{n_x - n_y}{nq}$... com obter?
 
 ## Função de verossimilhança
 Para o problema acima temos $X \sim Binomial(n, \pi)$ e 
@@ -158,4 +201,9 @@ Estimating the proportion of Corona cases with a random sample
 
 * https://grazeconomics.wordpress.com/2020/04/22/estimating-the-proportion-of-corona-cases-with-a-random-sample/
 
+Disclosure limitation for data release??? researchers need data!!!
 
+* https://www.statschat.org.nz/2020/04/18/prevalence-estimation-is-it-out-there/
+
+* https://www.statschat.org.nz/2020/04/19/counting-rare-things-is-hard/ 
+  

@@ -1,2 +1,2 @@
 # MCML-notes
-Lecture notes on binary variable likelihood optimization for finite populations
+Lecture notes on binary variable likelihood optimization for finite populations.

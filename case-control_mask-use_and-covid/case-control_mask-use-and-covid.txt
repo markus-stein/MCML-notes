@@ -1,6 +1,7 @@
 * In one of the messages popping-up when accessing my Uni's website, the headline says (in portuguese):
     + "To use mask correctly reduce in about 87% the risk of getting the virus".
-* The study is a case-control survey, very well conducted by researchers in epidemiology from the key Universities of our state.
+* The study is a case-control survey, very well conducted by researchers in epidemiology from the key Universities of our state and council health board.
+    + Lancet pre-print paper !["Social Distancing, Mask Use and the Transmission of SARS-CoV-2: A Population-Based Case-Control Study"](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3731445)
     + Are we able to say the hadline from this case-control study?
 * Can masks by themselves decrease the risks covid-19?
     + physics and chemistry... how droplets travel in the air with and without masks... for how long it stays... 

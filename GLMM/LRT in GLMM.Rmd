@@ -91,3 +91,13 @@ https://www.economist.com/international/2019/11/14/economics-demography-and-soci
 How to build a GLMM to combine economic/wealth, health, demographic, politics, social media... and explain the outbreaks of protests around the world?
 
 Why economists get things wrong... they are like a marginal model where the most assumption is profit increasing month after month... but conditional models on measures out of economics box could help to explain government performances... individual and aggregated info... to link with dynamic models and relation to quantum theories...
+
+
+
+
+
+From 'Weights in statistics' in https://notstatschat.rbind.io/2020/08/04/weights-in-statistics/
+"The big exception to the principle that point estimates are the same for all types of weights is mixed models. There are two issues:
+(1) mixed models are about partitioning variance, and precision weights encode assumptions about variance, so precision weights matter for estimating residual variance vs variance components. 
+(2) the loglikelihood is not just a sum of terms involving one observation, so there’s nowhere to stick sampling weights
+There are also major complications for Bayesian inference with sampling weights, and we’ll just not go there for now."

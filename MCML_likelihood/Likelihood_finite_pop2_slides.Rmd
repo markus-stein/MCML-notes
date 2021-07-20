@@ -65,7 +65,7 @@ log-likelihood expression
 
 
 ## Latent variables
-- longitudinal
+- longitudinal/spatial patterns
 
 - ecological fallacy
 
@@ -121,18 +121,3 @@ case-control designs with categorical covariates.
 
 We consider strategy to combine aggregate and init level.... wich gives a model calibration....
 
-
-The main purpose of this paper is to propose a new LASSO type penalty
-aiming to improve out-of-sample forecasting performance for seasonal time series in
-high dimensionality scenarios. We also present results concerning parameter
-estimation performance. Our approach leads to what we call SWLadaLASSO
-(seasonal weighted lag adaptive LASSO) which assigns larger penalties for higher
-lagged covariate coeffcients - based on the idea of WLadaLASSO by Konzen and
-Ziegelmann (2016) - except those associated with the seasonal lags of the response
-variable. It can be considered a generalization of the WLadaLASSO. In our Monte
-Carlo studies, the SWLadaLASSO is superior in terms of forecasting, parameter
-estimation and also covariate selection in most of the cases when compared to other
-LASSO-type penalty models. An empirical application is conducted to evaluate the
-capability of the proposed approach to forecast Brazilian GDP growth. Additionally, a
-set of forecast combinations is implemented in search of forecast accuracy
-improvement.

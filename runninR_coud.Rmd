@@ -1,7 +1,7 @@
 ---
 title: "R jobs in the heavens"
 output:
-  html_document: default
+  pdf_document: default
 ---
 
 ## Running R jobs at large scale (remotely)
@@ -67,6 +67,34 @@ output:
 
 * You have to setup and install everything for the first time, start and stop the job whenever you want. 
     + Even if you stop the VM if there is files in the storage will be charged by the service.
+
+
+## Everything is Docker!!!
+
+### containering R
+* Docker + R - Rocker package - https://www.rocker-project.org/
+
+* Rstudio...
+	+ support for Shinny apps
+
+
+### containering your code
+* R.project + Github with Docker...
+	+ your favorite R packages
+	+ third party softwares... latte integrale for example
+
+* dockering R
+	+ Using R via Rocker A Brief Introduction to Docker for R - http://dirk.eddelbuettel.com/papers/chirug_nov2019_rocker.pdf
+	+ a good quick Docker introduction for R users - https://colinfay.me/docker-r-reproducibility/ 
+	+ example of calling additional libraries - Running your R script in Docker - https://www.r-bloggers.com/2019/02/running-your-r-script-in-docker/
+* dockering R studio
+	+ a nice introduction and well organised setup - https://www.symbolix.com.au/blog-main/r-docker-hello
+	+ example setting additional libraries (but using rstudio server) - https://davetang.org/muse/2021/04/24/running-rstudio-server-with-docker/
+	+ sharing and Running R code using Docker - https://aboland.ie/Docker.html
+
+* advantage in using rstudio images... maybe community is working more in containerisation... 
+R Docker faster - My experiment shows R Docker images will build much faster thanks to the new package manager from RStudio - from https://medium.com/@skyetetra/r-docker-faster-28e13a6d241d
+
 
 ### "the easy way" to get started quickly
 * Rstudio on google cloud Marketplace... https://support.rstudio.com/hc/en-us/articles/115010260627-Getting-Started-with-RStudio-Workbench-RStudio-Server-Pro-Standard-for-GCP

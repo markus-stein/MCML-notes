@@ -1,7 +1,6 @@
 ---
 title: "R jobs in the heavens"
 output:
-  pdf_document: default
   html_document: default
 ---
 
@@ -40,31 +39,38 @@ output:
 
 ### R Cloud - AT&T Labs
 * Try It, Online or Locally - https://rcloud.social/tryit/index.html
-    + support to different languages in the same code
-    + everything code abd abakysis is public
+    + support to different programming languages in the same code
+    + code and analysis everything is public
 
 ### Rstudio Server or connect???
 * From "What is the difference between rstudio-connect and rstudio-pro" - https://community.rstudio.com/t/what-is-the-difference-between-rstudio-connect-and-rstudio-pro/43949
-    + RStudio Server Pro - Very similar to the Desktop IDE, but runs on a server. This is very helpful for a few reasons: it allows you to have more compute resources closer to your data, it provides a uniform environment for teams that makes it easier to collaborate, and it provides controls for administrators to monitor and scale work.
-    + RStudio Connect - Makes it easy to share R Markdown reports, deploy shiny web applications, and deploy APIs written in R. Connect can also be used to share Jupyter Notebooks. Whereas GitHub stores your code statically, RStudio Connect knows how to run it, which means your work can be accessible to non R users. For example, a user can visit a shiny application on RStudio Connect and interact with the app without ever knowing R code is involved! Likewise, you can have RStudio Connect run reports on a schedule and send emails with the results.
+
+* RStudio Server Pro - Very similar to the Desktop IDE, but runs on a server. 
+    + it allows you to have more compute resources closer to your data, 
+    + it provides a uniform environment for teams that makes it easier to collaborate, 
+    + and it provides controls for administrators to monitor and scale work.
+
+* RStudio Connect - Makes it easy to share R Markdown reports, 
+    + deploy shiny web applications, and APIs written in R. 
+    + GitHub stores your code statically, RStudio Connect knows how to run it, (accessibility to non R users... shiny applications)
+    + run reports on a schedule and send emails with the results.
 
 * R Studio Server on Google Cloud - https://towardsdatascience.com/r-studio-server-on-google-cloud-dd69b8bff80b
 
 * Getting Started with RStudio Connect for GCP - https://support.rstudio.com/hc/en-us/articles/360033988434-Getting-Started-with-RStudio-Connect-for-GCP
 
 ## Docker
-* all starts with Docker???
-* primary focused on reproducibility??? ... but also have your code running in any cloud service
+* All starts with Docker;
+* Primary focused on reproducibility? But also have your code running in any cloud service.
 
-### Container it! Rstudio with all you need in a docker container and deploy in a virtual lmachine... you dont need to instal everytinhg again and again manually... and have your code "forever"
+*Container it! Rstudio with all you need in a docker container and deploy in a virtual machine... you don't need to install everytinhg again and again manually... and have your code "forever".*
 
 * You have to setup and install everything for the first time, start and stop the job whenever you want. 
-  + **Even if you stop the VM if there is files in the storage will be charged by the service**
-
+    + Even if you stop the VM if there is files in the storage will be charged by the service.
 
 ### "the easy way" to get started quickly
+* Rstudio on google cloud Marketplace... https://support.rstudio.com/hc/en-us/articles/115010260627-Getting-Started-with-RStudio-Workbench-RStudio-Server-Pro-Standard-for-GCP
+    + you can use it all interactively, but has to install everytime you setup a virtual machine...
 
-Rstudio on google cloud... you can use it all iteratively, but has to install everytime you setup a virtual machine...
 
-https://support.rstudio.com/hc/en-us/articles/115010260627-Getting-Started-with-RStudio-Workbench-RStudio-Server-Pro-Standard-for-GCP
 

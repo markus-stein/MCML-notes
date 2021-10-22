@@ -80,22 +80,10 @@ output:
 
 ### containering your code
 * R.project + Github with Docker...
-	+ your favorite R packages
-	+ third party softwares... latte integrale for example 
-	
-* how to add `C` library GMP, GNU for arithmetic precision? (part of latte distro) Via Rstudio Connect not working from its own terminal... use only docker file instead with R base???
-  + latte distro - https://github.com/latte-int/latte-distro
-  + https://gmplib.org/#DOWNLOAD (there is a R package that needs the distro installed)
-
-open ssh in browser... packages not installed
-```
-sudo apt sudo apt update
-sudo apt install build-essential
-sudo apt-get install m4
-```
-upload latte distro .tar.gz (you can do this by clicks)... unpack and configure it!!!
-
-
+  + `R` or Rstudio image;
+	+ your favorite R packages;
+	+ third party softwares, GMP e Latte Integrale for example.
+	+ your codes;
 
 * dockering R
 	+ Using R via Rocker A Brief Introduction to Docker for R - http://dirk.eddelbuettel.com/papers/chirug_nov2019_rocker.pdf
@@ -108,30 +96,93 @@ upload latte distro .tar.gz (you can do this by clicks)... unpack and configure 
 
 https://code.markedmondson.me/r-at-scale-on-google-cloud-platform/
 
-### Example R and Google cloud
+
+### Third parties software
+* How to add `C` library GMP, GNU for arithmetic precision on GCP? (Or latte distro, both `.tar.gz`) Via Rstudio Connect not working from its own terminal... 
+  + latte distro - https://github.com/latte-int/latte-distro
+  + GMP - https://gmplib.org/#DOWNLOAD
+
+
+* There are R packages for both but them need the distro installed.
+    + (*"they are linux... trying to run on a windows machine can be very painfull"*)
+
+* Doing this interactively in the example below.
+    + how to make it all install from Dockerfile image? (with R base or Rstudio image???)
+
+
+### Example RStudio in a Google cloud VM - interactively
 1. to create VM on Google cloud (after having an account)
 
 a.. `VM instances > + Create ...`
 b. Open Cloud shell ... you can upload files/folders by clicking...
 
-2. building and runing rstudio from your Dockerfile image
 
-a. Build it
+2. Open terminal in browser by clicking `SSH` button...  
 
-Type the following command into the command line. You must be in the same directory as your Dockerfile.
+a. Installing essential apt and third parties software
 
-`sudo docker build --rm --force-rm -t rstudio/my_simulation .`
+In the case of Latte distro some packages for installation are not installed in GCP
 
-the --rm --force-rm just forces the container to delete itself once its scripts run or you log out. It just stops us
-filling up the server with lots of containers doing nothing. 
+```
+sudo apt sudo apt update
+sudo apt install build-essential
+sudo apt-get install m4
+```
+
+b. upload Latte distro `.tar.gz` (terminal has menu to do this, just clicks)... unpack and configure it!!!
+
+to unpack the bundle
+
+```
+tar -xvzf latte-integrale-1.7.3b.tar.gz
+```
+
+and to configure
+
+```
+./configure
+make
+```
+
+Now all the files are in `/home/rstudio-user/latte-integrale-1.7.3b/dest` 
+
+
+3. Installing Docker - thanks to https://tomroth.com.au/gcp-docker/
+*"Before running `Dockerfile` Docker also needs to be installed."*
+
+```
+sudo apt update
+sudo apt install --yes apt-transport-https ca-certificates curl gnupg2 software-properties-common
+curl -fsSL https://download.docker.com/linux/debian/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+sudo apt update
+sudo apt install --yes docker-ce
+```
+
+4. Building and runing rstudio from your Dockerfile image
+
+a. Build it - go to the same directory as your Dockerfile and type the command
+
+```
+sudo docker build --rm --force-rm -t rstudio/my_simulation .
+```
+
+the --rm --force-rm options forces to delete the container once its scripts run or you log out. (stops filling up the server with lots of containers doing nothing.) 
 
 `sudo docker image list` if you want to see your image added to the list.
 
-b. Run it
+b. Run it (updated - from https://hub.docker.com/r/rocker/rstudio)
 
-`sudo docker run -d --rm -p 28787:8787 --name my_simulation rstudio/my_simulation
+```
+sudo docker run -d -p 8787:8787 -v $(pwd):/home/rstudio -e PASSWORD=yourpasswordhere rocker/rstudio
+```
 
-Done! Now open your webbrowser at `<yourhostip:28787>` . Username and password are both rstudio 
+Done! Now open the rstudio in `localhost:8787` and type `source("my_simulation.R")`. Username and password are both rstudio 
+
+```
+sudo docker stop my_simulation
+```
+
 
 
 # Rstudio or R on google cloud???
@@ -150,35 +201,38 @@ R Docker faster - "My experiment shows R Docker images will build much faster th
 * Rstudio on google cloud Marketplace... https://support.rstudio.com/hc/en-us/articles/115010260627-Getting-Started-with-RStudio-Workbench-RStudio-Server-Pro-Standard-for-GCP
     + you can use it all interactively, but has to install everytime you setup a VM...
 
-* installing tar.gz... via terminal
-
-to unpack the bundle
-```
-tar -xvzf latte-integrale-1.7.3b.tar.gz
-```
-
-and to configure
-
-```
-./configure
-make
-```
-
-Now all the files are in `/home/rstudio-user/latte-integrale-1.7.3b/dest` 
-
-install.packages("gmp") error... what is the best option? to submit jobs and use R distro base... or Rstudio facilities??? I couldnt install latte integrale distro interactively...
-
-```
-./configure
- make
-```
-Some self-tests can be run with
-```
-make check
-```
-And you can install (under '/usr/local' by default) with
-```
-make install
-```
-* Another quick way to launch Rstudio on GCP
+* Another quick way to launch Rstudio on GCP - via R code
     + Launch RStudio Server in the Google Cloud with two lines of R - https://code.markedmondson.me/launch-rstudio-server-google-cloud-in-two-lines-r/
+    
+
+<!-- ##installing `.tar.gz`... via terminal -->
+
+<!-- to unpack the bundle -->
+
+<!-- ``` -->
+<!-- tar -xvzf latte-integrale-1.7.3b.tar.gz -->
+<!-- ``` -->
+
+<!-- and to configure -->
+
+<!-- ``` -->
+<!-- ./configure -->
+<!-- make -->
+<!-- ``` -->
+
+<!-- Now all the files are in `/home/rstudio-user/latte-integrale-1.7.3b/dest`  -->
+
+<!-- install.packages("gmp") error... what is the best option? to submit jobs and use R distro base... or Rstudio facilities??? -->
+
+<!-- ``` -->
+<!-- ./configure -->
+<!--  make -->
+<!-- ``` -->
+<!-- Some self-tests can be run with -->
+<!-- ``` -->
+<!-- make check -->
+<!-- ``` -->
+<!-- And you can install (under '/usr/local' by default) with -->
+<!-- ``` -->
+<!-- make install -->
+<!-- ``` -->

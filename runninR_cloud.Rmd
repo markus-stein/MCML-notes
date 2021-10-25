@@ -271,3 +271,5 @@ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-
 sudo apt install r-base
 ```
 
+## instructions on R page... a bit handy... http://cloud.r-project.org/bin/linux/debian/#debian-buster-stable
+A good reference to upgrade R to 4.X... https://www.charlesbordet.com/en/how-to-upgrade-to-R-4-0-0-on-debian/#

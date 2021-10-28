@@ -56,11 +56,12 @@ output:
     + GitHub stores your code statically, RStudio Connect knows how to run it, (accessibility to non R users... shiny applications)
     + run reports on a schedule and send emails with the results.
 
-* R Studio Server on Google Cloud - https://towardsdatascience.com/r-studio-server-on-google-cloud-dd69b8bff80b
-    + without Docker!!!
+* (easy way) Without Docker!!!
+    + R Studio Server on Google Cloud - https://towardsdatascience.com/r-studio-server-on-google-cloud-dd69b8bff80b
     
-* Getting Started with RStudio Connect for GCP - https://support.rstudio.com/hc/en-us/articles/360033988434-Getting-Started-with-RStudio-Connect-for-GCP
-    + pre-configured from Marketplace - ready-to-use most of the time are more expensive
+* (easiest way) pre-configured from Marketplace 
+* Ready-to-use and most of the time more expensive
+    + Getting Started with RStudio Connect for GCP - https://support.rstudio.com/hc/en-us/articles/360033988434-Getting-Started-with-RStudio-Connect-for-GCP
 
 ## Docker
 * All starts with Docker;
@@ -75,7 +76,7 @@ output:
 ## Everything is Docker!!!
 
 ### containering R
-* Docker + R - Rocker package - https://www.rocker-project.org/
+* Docker + R - Rocker project - https://www.rocker-project.org/
 
 * Rstudio...
 	+ support for Shinny apps
@@ -198,7 +199,7 @@ sudo docker stop my_simulation
 R Docker faster - "My experiment shows R Docker images will build much faster thanks to the new package manager from RStudio" from https://medium.com/@skyetetra/r-docker-faster-28e13a6d241d
 
 * COSTS??? What would all this cost??
-  + A VM with 1 vCPu n1-standard-1 (3.75GB RAM and 30GB SSD) with Rstudio from `Marketplace` costs around $5.5 \times$ a VM from `Compute > Compute Engine > VM Instances > + Create VM instance` in my region;
+  + (easiest way) A VM with 1 vCPu n1-standard-1 (3.75GB RAM and 30GB SSD) with Rstudio from `Marketplace` costs around $5.5 \times$ a VM from `Compute > Compute Engine > VM Instances > + Create VM instance` in my region;
   + So run your Dockerfile!!!
 
 
@@ -244,11 +245,11 @@ R Docker faster - "My experiment shows R Docker images will build much faster th
 <!-- make install -->
 <!-- ``` -->
 
-## command line interactively
+## Command line interactively
 lots of things didnt work... instal GNU softwares OK... but using rstudio/docker it creates other user and the connection doesnt seem easy for a ...
 
-install R... and Run your code...  
-is it possible to run different jobs in different terminals... interactively but not in your machine... how to keep running without being logged in
+1. install R... and Run your code...  
+is it possible to run different jobs in different terminals... interactively but not in your machine... how to keep running without being logged in? (... using Rstudio??? ead)
 
 ```
 sudo apt-get install r-base r-base-dev
@@ -258,10 +259,12 @@ after installing.... type `R` and... like the old times...
 
 to edit files `sudo apt-get install vim`
 
+### latest R base on google cloud???  
 
+* Instructions on R page... a bit handy... http://cloud.r-project.org/bin/linux/debian/#debian-buster-stable
 
+* A good reference to upgrade R to 4.X... https://www.charlesbordet.com/en/how-to-upgrade-to-R-4-0-0-on-debian/#
 
-latest R base ???not working on google cloud??? still getting the 
 ```
 ## pre-requisite
 sudo apt-get install software-properties-common -y
@@ -271,5 +274,3 @@ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-
 sudo apt install r-base
 ```
 
-## instructions on R page... a bit handy... http://cloud.r-project.org/bin/linux/debian/#debian-buster-stable
-A good reference to upgrade R to 4.X... https://www.charlesbordet.com/en/how-to-upgrade-to-R-4-0-0-on-debian/#

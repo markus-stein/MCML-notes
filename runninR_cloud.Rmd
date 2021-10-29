@@ -58,9 +58,10 @@ output:
 
 * (easy way) Without Docker!!!
     + R Studio Server on Google Cloud - https://towardsdatascience.com/r-studio-server-on-google-cloud-dd69b8bff80b
+    + Deploying R Studio on Compute Engine - https://sookocheff.com/post/r/deploying-r-studio-to-compute-engine/
     
 * (easiest way) pre-configured from Marketplace 
-* Ready-to-use and most of the time more expensive
+    + Ready-to-use and most of the time more expensive
     + Getting Started with RStudio Connect for GCP - https://support.rstudio.com/hc/en-us/articles/360033988434-Getting-Started-with-RStudio-Connect-for-GCP
 
 ## Docker
@@ -274,3 +275,32 @@ sudo add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu focal-
 sudo apt install r-base
 ```
 
+### Or Install Rstudio Server and have Rstudio facilities
+
+To install Rstudio Server (check the latest version)    https://www.rstudio.com/products/rstudio/download-server/debian-ubuntu/
+
+```
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5019-amd64.deb
+sudo gdebi rstudio-server-1.2.5019-amd64.deb
+sudo apt-get install libcurl4-openssl-dev libssl-dev libxml2-dev
+```
+
+Add an user ("R Studio only permits access to users of the system")
+
+```
+sudo adduser rstudio
+exit
+```
+
+to keep rstudio running when signout, add commands ???not working??? (frist time installed older version, tried rsession.conf but installed as rstudio recommends... and worked :-( )
+
+```
+auth-timeout-minutes=0
+auth-stay-signed-in-days=30
+```
+to file `/etc/rstudio/rserver.conf` and restart rstudio server
+
+```
+sudo rstudio-server restart
+```

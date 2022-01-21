@@ -120,7 +120,7 @@ https://code.markedmondson.me/r-at-scale-on-google-cloud-platform/
 ### Example RStudio in a Google cloud VM - interactively
 1. to create VM on Google cloud (after having an account)
 
-a.. `VM instances > + Create ...`
+a. `VM instances > + Create ...`
 
 b. create a firewall rule - see details https://towardsdatascience.com/r-studio-server-on-google-cloud-dd69b8bff80b
 
@@ -137,7 +137,7 @@ sudo apt install build-essential
 sudo apt-get install m4
 ```
 
-b. upload Latte distro `.tar.gz` (terminal has menu to do this by clicks)... unpack and configure it!!!  
+b. upload Latte distro `.tar.gz` (terminal has menu to do this by clicking)... unpack and configure it!!!  
 (latte 1.7.5 from github is not working, maybe some option for `./configure`)
 
 to unpack the bundle  

@@ -8,7 +8,7 @@ output:
 
 * A good point: Collaboration and sharing codes and analysis
 
-* Local clusters... you may have access to one in you institution, but
+* Local clusters... you may have access to one in your institution, but
     + high cost for maintenance and administration...
     + it must be accessible to all researchers... independently from subject
     + young guns and basic sciences are not very appealing to deserve access...
@@ -28,6 +28,7 @@ output:
 
 ### Google Cloud Platform
 * Running R at Scale on Compute Engine - clusters setup - https://cloud.google.com/architecture/running-r-at-scale
+    + free tial!!!
     + If not eligible for a free trial, "... a 6-node cluster composed of n1-standard-4 instances, would cost $1.84/hr ..."
 
     
@@ -36,7 +37,7 @@ output:
     + free credits for new accounts... better performance? lower costs?
 
     
-## R possibilities
+## R possibilities to heavens
 
 ### R Cloud - AT&T Labs
 * Try It, Online or Locally - https://rcloud.social/tryit/index.html
@@ -61,7 +62,7 @@ output:
     + Deploying R Studio on Compute Engine - https://sookocheff.com/post/r/deploying-r-studio-to-compute-engine/
     
 * (easiest way) pre-configured from Marketplace 
-    + Ready-to-use and most of the time more expensive
+    + Ready-to-use but a lot more expensive than setting up on your own.
     + Getting Started with RStudio Connect for GCP - https://support.rstudio.com/hc/en-us/articles/360033988434-Getting-Started-with-RStudio-Connect-for-GCP
 
 ## Docker
@@ -132,12 +133,12 @@ a. Installing essential applications and third-party softwares
 In the case of Latte distro some packages for installation are not installed in GCP
 
 ```
-sudo apt sudo apt update
+sudo apt update
 sudo apt install build-essential
 sudo apt-get install m4
 ```
 
-b. upload Latte distro `.tar.gz` (terminal has menu to do this by clicking)... unpack and configure it!!!  
+b.1 To install LATTE - upload Latte distro `.tar.gz` (terminal has menu to do this by clicking)... unpack and configure it!!!  
 (latte 1.7.5 from github is not working, maybe some option for `./configure`)
 
 to unpack the bundle  
@@ -146,7 +147,7 @@ to unpack the bundle
 tar -xvzf latte-integrale-1.7.3b.tar.gz
 ```
 
-and to configure, in the unpacked folder type
+and to configure, go the unpacked folder and type
 
 ```
 ./configure
@@ -155,6 +156,18 @@ make
 
 Now all the files are in `/home/rstudio-user/latte-integrale-1.7.3b/dest` 
 
+b.2. To install GMP - upload file `.tar.xz` and unpack it
+
+```
+tar -xf gmp-6.2.1.tar.xz
+```
+go to the unpacked folder and then install
+
+```
+./configure
+make
+make check        
+```
 
 3. Installing Docker - thanks to https://tomroth.com.au/gcp-docker/  
 *"Before running `Dockerfile` Docker also needs to be installed."*
@@ -281,6 +294,7 @@ To install Rstudio Server (check the latest version)    https://www.rstudio.com/
 
 ```
 sudo apt-get install gdebi-core
+sudo apt-get install wget
 wget https://download2.rstudio.org/server/bionic/amd64/rstudio-server-1.2.5019-amd64.deb
 sudo gdebi rstudio-server-1.2.5019-amd64.deb
 sudo apt-get install libcurl4-openssl-dev libssl-dev libxml2-dev
